@@ -1,10 +1,18 @@
+/****
+*
+* Hana Pump
+* 
+* Author: Mezz / Fivefactorial
+*/
 
-
+// Pins for arduino motor shield
 int dir = 12;
 int pwm = 3;
 
+// Time remaining in deciseconds (100 milliseconds)
 int time = 0;
 
+// Resets the arduino
 void(* reset) (void) = 0;
 
 void setup(){
@@ -14,7 +22,7 @@ void setup(){
   Serial.begin(9600);
   while (!Serial);
   
-  Serial.println("Welcome to Pump master 5000!");
+  Serial.println("Welcome to Hana Pump");
   
   digitalWrite(dir, HIGH);
 }
