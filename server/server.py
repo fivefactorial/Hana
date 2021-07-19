@@ -1,26 +1,25 @@
-from flask import Flask
+import os
+from flask import Flask, render_template, send_from_directory
 import json
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-	try:
-		return open('index.html').read()
-	except:
-		return "", 404
+	return render_template('index.html')
 
 @app.route('/script.js')
 def script():
-	try:
-		return open('script.js').read()
-	except:
-		return "", 404
+	return render_template('script.js')
 
 @app.route('/style.css')
 def style():
-	return open('style.css').read()
+	return render_template('style.css')
 
+app.route('/favicon.ico')
+def favicon():
+	print("Fav icon")
+	return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
 @app.route('/data')
